@@ -78,6 +78,10 @@ PUBLIC_BASE_URL=https://your-public-domain
 GOOGLE_REDIRECT_URI=https://your-public-domain/auth/google/callback
 ```
 
+## AI Email Assistant (Flask app)
+
+The Flask app also has an AI Email Assistant. Give it a screenshot or pasted recruiter message and it finds the recipient, drafts the email from your profile, and lets you review, edit and send it through Gmail. Setup (AI provider keys, Gmail) and details are in [EMAIL_ASSISTANT.md](EMAIL_ASSISTANT.md).
+
 ## Safety Notes
 
 - Test with one or two emails before sending a larger batch.

@@ -1,0 +1,29 @@
+# Render Blueprint: https://render.com/docs/blueprint-spec
+# In Render: New + -> Blueprint -> pick this repo. You'll be asked for GEMINI_API_KEY and SIGNUP_CODE.
+services:
+  - type: web
+    name: apply-rocket
+    runtime: python
+    plan: starter            # needed for the persistent disk (and outbound Gmail SMTP)
+    branch: render-deploy
+    buildCommand: pip install -r requirements.txt
+    # One worker: accounts, history and rate limits live in files/memory on this one instance.
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --threads 8 --timeout 120
+    healthCheckPath: /healthz
+    disk:
+      name: data
+      mountPath: /var/data   # accounts, profiles, resumes, history, Gmail connections
+      sizeGB: 1
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: APP_DATA_DIR
+        value: /var/data
+      - key: AI_PROVIDER
+        value: gemini
+      - key: FLASK_SECRET_KEY
+        generateValue: true
+      - key: GEMINI_API_KEY
+        sync: false          # paste your key when Render asks
+      - key: SIGNUP_CODE
+        sync: false          # invite code you and your friend use to create accounts
