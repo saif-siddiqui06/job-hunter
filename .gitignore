@@ -4,3 +4,15 @@ __pycache__/
 venv/
 .env
 .streamlit/secrets.toml
+
+# Runtime data (personal details, OAuth tokens, uploaded resumes)
+activity.json
+drafts.json
+profile.json
+.gmail_tokens.json
+.flask_secret
+.tmp-*.json
+uploads/
+.pytest_cache/
+users/
+users.json

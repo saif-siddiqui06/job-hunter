@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign in · Apply Rocket</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23ff5a1f'/%3E%3Cpath d='M11 21c-1.5 1.5-2 4-2 4s2.5-.5 4-2M13 18l1.5 1.5M18.5 8.5C21 8 24 8.5 24 8.5s.5 3 0 5.5L17 21l-5-5z' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="/static/assistant/app.css" rel="stylesheet">
+</head>
+<body class="auth-body">
+<main class="auth">
+    <section class="auth-pitch" aria-hidden="true">
+        <span class="brand">
+            <span class="brand-mark"><svg viewBox="0 0 24 24"><path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2"/><path d="m9 12 3 3"/><path d="M14.5 3.5C17 3 20.5 3.5 20.5 3.5s.5 3.5 0 6L13 17l-6-6z"/><circle cx="15.5" cy="8.5" r="1.4"/></svg></span>
+            <span class="brand-name">Apply Rocket</span>
+        </span>
+        <h1>Recruiter message in. Great email out.</h1>
+        <p>Paste a message or drop a screenshot. Apply Rocket finds who to write to, drafts the email from your profile, and sends it from your Gmail when you say so.</p>
+    </section>
+
+    <section class="card auth-card" aria-labelledby="authTitle">
+        <h2 id="authTitle">Sign in</h2>
+        <p class="modal-sub" id="authSub">Welcome back.</p>
+        <div class="segmented segmented-wide" role="radiogroup" aria-label="Sign in or create an account">
+            <label><input type="radio" name="authMode" value="login" checked /><span>Sign in</span></label>
+            <label><input type="radio" name="authMode" value="signup" /><span>Create account</span></label>
+        </div>
+        <form id="authForm" novalidate>
+            <div class="field">
+                <label for="username">Username</label>
+                <input type="text" id="username" autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="32" required />
+            </div>
+            <div class="field">
+                <label for="password">Password</label>
+                <input type="password" id="password" autocomplete="current-password" minlength="8" required />
+                <span class="field-hint" id="passwordHint" hidden>At least 8 characters.</span>
+            </div>
+            <div class="field" id="inviteField" hidden>
+                <label for="inviteCode">Invite code</label>
+                <input type="text" id="inviteCode" autocomplete="off" />
+                <span class="field-hint">Ask the person who runs this app.</span>
+            </div>
+            <div class="notice" id="authNotice" role="alert" hidden></div>
+            <button type="submit" class="btn btn-primary btn-block" id="authSubmit">Sign in</button>
+        </form>
+    </section>
+</main>
+<script type="module" src="/static/assistant/login.js"></script>
+</body>
+</html>
