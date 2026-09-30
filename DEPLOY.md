@@ -1,8 +1,26 @@
-# Hosting Apply Rocket on Render
+# Hosting Apply Rocket
 
-The repo includes a Render Blueprint (`render.yaml`) that runs the Flask app with gunicorn, on a persistent disk, behind HTTPS.
+## Free: PythonAnywhere (no card needed)
 
-## Deploy (about 10 minutes)
+The free plan keeps your files (accounts, history, resumes), allows Gmail SMTP and Google APIs (Gemini), and gives you `https://<username>.pythonanywhere.com`.
+
+1. Create a free **Beginner** account at https://www.pythonanywhere.com. Your username becomes the web address.
+2. Open **Consoles → Bash** and run:
+   ```bash
+   git clone -b render-deploy https://github.com/saif-siddiqui06/job-hunter.git
+   bash job-hunter/deploy/pythonanywhere_setup.sh
+   ```
+   It installs everything and asks for your **Gemini API key** and an **invite code** of your choice.
+3. Follow the steps it prints on the **Web** tab: manual configuration, Python 3.11, the paths it shows, paste `deploy/pythonanywhere_wsgi.py` into the WSGI file, turn on **Force HTTPS**, then **Reload**.
+4. Open `https://<username>.pythonanywhere.com` → **Create account** with the invite code. Share the link and the code with your friend.
+
+Free-plan rules: log in and click **"Run until 3 months from today"** on the Web tab every 3 months, or the site pauses. To update after new code is pushed, run `cd ~/job-hunter && git pull`, then click **Reload** on the Web tab.
+
+## Paid: Render
+
+Render's free tier doesn't fit this app: it blocks Gmail's SMTP ports and has no persistent disk. The Render Blueprint (`render.yaml`) uses the paid Starter plan with a disk instead.
+
+## Deploy on Render (about 10 minutes)
 
 1. Sign in at https://render.com with the GitHub account that owns this repo.
 2. Click **New +** → **Blueprint**, pick this repository, and choose the `render-deploy` branch if asked.
